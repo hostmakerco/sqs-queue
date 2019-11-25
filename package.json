@@ -26,7 +26,7 @@
     "lint": "eslint --cache --ext .js,.ts ./",
     "ci:lint": "eslint --ext .js,.ts . --format junit --output-file ./reports/eslint/result.xml",
     "test": "jest --env=node",
-    "ci:test": "cross-env JEST_JUNIT_OUTPUT=./reports/jest/result.xml CI=1 jest --env=node --reporters=default --reporters=jest-junit",
+    "ci:test": "jest --ci --env=node --reporters=default --reporters=jest-junit",
     "prepare": "yarn build"
   },
   "husky": {
@@ -42,7 +42,6 @@
     "@types/jest": "^23.1.5",
     "@typescript-eslint/eslint-plugin": "^1.0.0",
     "@typescript-eslint/parser": "^2.8.0",
-    "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
     "eslint-config-typescript-airbnb-base": "^1.0.0-rc1",
     "eslint-plugin-import": "^2.14.0",
