@@ -1,0 +1,55 @@
+{
+  "name": "@hostmakerco/sqs-queue",
+  "version": "1.0.0",
+  "description": "A helpful wrapper for SQS Consumer and SQS Producer",
+  "author": "Stefano Susini",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hostmakerco/sqs-queue.git"
+  },
+  "main": "dist/sqs-queue.js",
+  "umd:main": "dist/sqs-queue.umd.js",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "microbundle watch",
+    "start": "yarn dev",
+    "build": "microbundle",
+    "lint": "eslint --cache --ext .js,.ts ./",
+    "ci:lint": "eslint --ext .js,.ts . --format junit --output-file ./reports/eslint/result.xml",
+    "test": "jest --env=node",
+    "ci:test": "cross-env JEST_JUNIT_OUTPUT=./reports/jest/result.xml CI=1 react-scripts-ts test --env=jsdom --reporters=default --reporters=jest-junit",
+    "prepare": "yarn build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint && CI=true yarn test"
+    }
+  },
+  "dependencies": {
+    "sqs-consumer": "^5.4.0",
+    "sqs-producer": "^1.6.3"
+  },
+  "peerDependencies": {},
+  "devDependencies": {
+    "@types/jest": "^23.1.5",
+    "@typescript-eslint/eslint-plugin": "^1.0.0",
+    "@typescript-eslint/parser": "^2.8.0",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-typescript-airbnb-base": "^1.0.0-rc1",
+    "eslint-plugin-import": "^2.14.0",
+    "husky": "^3.1.0",
+    "jest-junit": "^6.4.0",
+    "microbundle": "^0.11.0",
+    "typescript": "^3.7.2"
+  }
+}
